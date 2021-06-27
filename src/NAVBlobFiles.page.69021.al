@@ -1,4 +1,4 @@
-page 69021 "NAV Blob File"
+page 69021 "NAV Blob Files"
 {
     PageType = API;
     Caption = 'apiPageName';
