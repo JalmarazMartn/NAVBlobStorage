@@ -1,0 +1,26 @@
+{
+  "id": "4a426767-0ed3-4b9d-b81b-0ad1d8a56399",
+  "name": "NAV BlobStorage",
+  "publisher": "JessAlmarazMartin",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 69000,
+      "to": 69099
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://BlobStorage.com/help/",
+  "showMyCode": true,
+  "runtime": "6.0"
+}
