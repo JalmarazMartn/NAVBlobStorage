@@ -8,8 +8,10 @@ codeunit 69010 "NAV Blob File Storage"
     [ServiceEnabled]
     [Scope('Cloud')]
     procedure LoadFile(fileType: Code[20]; fileName: Text[30]; Content: Text): Text
+    var
+        NAvBlobFile: Record "NAv Blob File";
     begin
-        exit(StrSubstNo('FileType is %1, my content %2', fileType, Content));
+        NAvBlobFile.CreateFile(fileType, fileName, Content);
     end;
 
 }

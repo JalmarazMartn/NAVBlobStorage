@@ -22,5 +22,10 @@ table 69005 "Blob File Type"
             Clustered = true;
         }
     }
-
+    procedure CreateIfNotExists(FileTypeCode: Code[20])
+    begin
+        Code := FileTypeCode;
+        if not Find() then
+            Insert();
+    end;
 }

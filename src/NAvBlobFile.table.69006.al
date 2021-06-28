@@ -40,24 +40,32 @@ table 69006 "NAv Blob File"
     var
         myInt: Integer;
 
-    trigger OnInsert()
+    procedure CreateFile(fileTypeCode: Code[20]; fileName: Text[30]; FileContent: Text)
+    var
+        BlobFileType: Record "Blob File Type";
+        Base64Convert: Codeunit "Base64 Convert";
+        FileOutStream: OutStream;
     begin
-
+        if get(fileTypeCode, fileName) then
+            Delete();
+        "Blob File Type" := fileTypeCode;
+        Name := fileName;
+        "File Date" := CreateDateTime(WorkDate(), Time);
+        BlobFileType.CreateIfNotExists(fileTypeCode);
+        Insert();
+        Content.CreateOutStream(FileOutStream);
+        Base64Convert.FromBase64(FileContent, FileOutStream);
+        Modify();
     end;
 
-    trigger OnModify()
+    procedure ViewFile()
+    var
+        FileInstream: InStream;
+        FileName: Text;
     begin
-
+        CalcFields(Content);
+        Content.CreateInStream(FileInstream);
+        FileName := Name;
+        DownloadFromStream(FileInstream, '', '', '', FileName);
     end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }
