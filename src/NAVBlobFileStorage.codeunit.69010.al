@@ -7,9 +7,9 @@ codeunit 69010 "NAV Blob File Storage"
 
     [ServiceEnabled]
     [Scope('Cloud')]
-    procedure LoadFile(BlobFileTypeCode: Code[20]; FileName: text[50]; FileContent: Text; ReplaceContent: Boolean)
+    procedure LoadFile(fileType: Code[20]; fileName: Text[30]; Content: Text): Text
     begin
-        Error('Error, but works');
+        exit(StrSubstNo('FileType is %1, my content %2', fileType, Content));
     end;
 
 }

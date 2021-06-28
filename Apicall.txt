@@ -1,0 +1,7 @@
+https://api.businesscentral.dynamics.com/v2.0/d7cb5e81-c522-4647-8410-7aceac79e5a3/Sandbox/ODataV4/Company('CRONUS%20ES')/AccountantPortalActivityCues
+POST {https://api.businesscentral.dynamics.com/v2.0/d7cb5e81-c522-4647-8410-7aceac79e5a3/Sandbox/ODataV4/NAVBlobFileStorage?company=CRONUS%20ES HTTP/1.1
+{
+    "inputJson": "{\"str\":\"Hello world!\",\"confirm\":true}"
+}
+https://api.businesscentral.dynamics.com/v2.0/d7cb5e81-c522-4647-8410-7aceac79e5a3/Sandbox/ODataV4/Company('*CRONUS%20ES*')/NAVBlobFileStorage
+https://api.businesscentral.dynamics.com/v2.0/d7cb5e81-c522-4647-8410-7aceac79e5a3/Sandbox/ODataV4/NAVBlobFileStorage_LoadFile?Company=CRONUS%20ES
