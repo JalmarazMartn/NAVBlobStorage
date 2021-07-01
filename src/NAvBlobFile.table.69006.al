@@ -68,4 +68,43 @@ table 69006 "NAv Blob File"
         FileName := Name;
         DownloadFromStream(FileInstream, '', '', '', FileName);
     end;
+
+    procedure OpenFileToRead()
+    begin
+        clear(GlobalInStream);
+        CalcFields(Content);
+        Content.CreateInStream(GlobalInStream);
+    end;
+
+    procedure EOF(): Boolean
+    begin
+        exit(GlobalInStream.EOS);
+    end;
+
+    procedure READTEXT() TextRow: Text
+    begin
+        GlobalInStream.ReadText(TextRow)
+    end;
+
+    procedure OpenFileToWrite(fileTypeCode: Code[20]; fileName: Text[30])
+    begin
+        CreateFile(fileTypeCode, fileName, '');
+        clear(GlobalOutStream);
+        Content.CreateOutStream(GlobalOutStream);
+    end;
+
+    procedure WRITEXT(TextRow: Text)
+    begin
+        GlobalOutStream.WriteText(TextRow);
+        GlobalOutStream.WriteText();
+    end;
+
+    procedure CloseFile()
+    begin
+        Modify();
+    end;
+
+    var
+        GlobalInStream: InStream;
+        GlobalOutStream: OutStream;
 }
