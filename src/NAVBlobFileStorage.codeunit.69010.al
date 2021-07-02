@@ -28,4 +28,23 @@ codeunit 69010 "NAV Blob File Storage"
         exit(Base64Convert.ToBase64(FileInstream));
     end;
 
+    [ServiceEnabled]
+    [Scope('Cloud')]
+    procedure GetFileList(fileType: Code[20]) List: text;
+    var
+        NAvBlobFile: Record "NAv Blob File";
+        FileToken: JsonObject;
+        FileList: JsonArray;
+        i: Integer;
+    begin
+        NAvBlobFile.SetRange("Blob File Type", fileType);
+        NAvBlobFile.FindSet();
+        repeat
+            FileToken.Add('name', NAvBlobFile.Name);
+            FileList.Insert(i, FileToken);
+            i := i + 1;
+        until NAvBlobFile.Next() = 0;
+        FileList.WriteTo(List);
+    end;
+
 }

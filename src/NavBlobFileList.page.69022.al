@@ -53,6 +53,19 @@ page 69022 "Nav Blob File List"
                     rec.ViewFile();
                 end;
             }
+            action(TEMP)
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    rec.OpenFileToRead();
+                    while not rec.EOF() do begin
+                        if not Confirm(rec.READTEXT(), true) then
+                            Error('Fin');
+                    end;
+                end;
+            }
         }
     }
 }
