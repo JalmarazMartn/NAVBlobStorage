@@ -40,6 +40,7 @@ codeunit 69010 "NAV Blob File Storage"
         NAvBlobFile.SetRange("Blob File Type", fileType);
         NAvBlobFile.FindSet();
         repeat
+            Clear(FileToken);
             FileToken.Add('name', NAvBlobFile.Name);
             FileList.Insert(i, FileToken);
             i := i + 1;
@@ -47,4 +48,13 @@ codeunit 69010 "NAV Blob File Storage"
         FileList.WriteTo(List);
     end;
 
+    [ServiceEnabled]
+    [Scope('Cloud')]
+    procedure DeleteFile(fileType: Code[20]; fileName: text[50]) List: text;
+    var
+        NAvBlobFile: Record "NAv Blob File";
+    begin
+        NAvBlobFile.Get(fileType, fileName);
+        NAvBlobFile.Delete(true);
+    end;
 }

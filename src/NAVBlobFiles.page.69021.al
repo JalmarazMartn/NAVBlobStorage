@@ -1,7 +1,7 @@
 page 69021 "NAV Blob Files"
 {
     PageType = API;
-    Caption = 'apiPageName';
+    Caption = 'NAV Blob Files';
     APIPublisher = 'publisherName';
     APIGroup = 'groupName';
     APIVersion = 'v1.0';
@@ -18,16 +18,11 @@ page 69021 "NAV Blob Files"
             {
                 field(Blob_File_Type; rec."Blob File Type")
                 {
-                    Caption = 'fieldCaption';
 
                 }
+                field(Name; rec.Name)
+                { }
             }
         }
     }
-    [ServiceEnabled]
-    [Scope('Cloud')]
-    procedure LoadFile(BlobFileTypeCode: Code[20]; FileName: text[50]; FileContent: Text; ReplaceContent: Boolean)
-    begin
-        Error('Error, but works');
-    end;
 }

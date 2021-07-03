@@ -18,7 +18,7 @@ page 69022 "Nav Blob File List"
                 }
                 field(Name; rec.Name)
                 {
-
+                    ApplicationArea = All;
                 }
                 field("File Date"; rec."File Date")
                 {
