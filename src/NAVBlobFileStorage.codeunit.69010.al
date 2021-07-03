@@ -57,4 +57,17 @@ codeunit 69010 "NAV Blob File Storage"
         NAvBlobFile.Get(fileType, fileName);
         NAvBlobFile.Delete(true);
     end;
+
+    [ServiceEnabled]
+    [Scope('Cloud')]
+    procedure ItemStock(ItemNo: Code[20]; LocationFilter: text[50]): Decimal
+    var
+        Item: Record Item;
+    begin
+        Item."No." := ItemNo;
+        Item.SetFilter("Location Filter", LocationFilter);
+        Item.CalcFields(Inventory);
+        exit(item.Inventory);
+    end;
+
 }

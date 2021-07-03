@@ -53,7 +53,7 @@ page 69022 "Nav Blob File List"
                     rec.ViewFile();
                 end;
             }
-            action(TEMP)
+            action(TestReadFile)
             {
                 ApplicationArea = All;
 
@@ -66,6 +66,28 @@ page 69022 "Nav Blob File List"
                     end;
                 end;
             }
+            action(TestWriteFile)
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    Customer: Record Customer;
+                    CustomerList: Page "Customer List";
+                begin
+                    CustomerList.LookupMode(true);
+                    if CustomerList.RunModal() <> Action::LookupOK then
+                        exit;
+                    CustomerList.SetSelection(Customer);
+                    Customer.FindSet();
+                    rec.OpenFileToWrite('TEST', 'TestFile.txt');
+                    repeat
+                        Rec.WRITEXT(Customer.Name);
+                    until Customer.next = 0;
+                    rec.CloseFile();
+                end;
+            }
+
         }
     }
 }
